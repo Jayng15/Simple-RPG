@@ -13,7 +13,7 @@ public static class ItemFactory {
     }
 
     public static GameItem? CreateGameItem(int itemTypeID) {
-        GameItem standardItem = _standardGameItems.FirstOrDefault(item => item.ItemTypeID == itemTypeID);
+        GameItem? standardItem = _standardGameItems.FirstOrDefault(item => item.ItemTypeID == itemTypeID);
 
         if (standardItem != null) {
             return standardItem.Clone();

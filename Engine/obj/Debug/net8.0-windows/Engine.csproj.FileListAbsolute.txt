@@ -10,3 +10,4 @@ C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\
 C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0-windows\Engine.pdb
 C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0-windows\ref\Engine.dll
 C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0-windows\Engine.g.resources
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0-windows\Engine.sourcelink.json
