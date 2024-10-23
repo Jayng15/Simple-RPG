@@ -1,0 +1,12 @@
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\bin\Debug\net8.0\Engine.deps.json
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\bin\Debug\net8.0\Engine.dll
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\bin\Debug\net8.0\Engine.pdb
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0\Engine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0\Engine.AssemblyInfoInputs.cache
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0\Engine.AssemblyInfo.cs
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0\Engine.csproj.CoreCompileInputs.cache
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0\Engine.dll
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0\refint\Engine.dll
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0\Engine.pdb
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0\ref\Engine.dll
+C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0\Engine.g.resources
