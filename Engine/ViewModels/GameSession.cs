@@ -1,5 +1,4 @@
-using System.ComponentModel;
-using Engine.Factories;
+using System.ComponentModel;using Engine.Factories;
 using Engine.Models;
 
 namespace Engine.ViewModels
@@ -32,6 +31,7 @@ namespace Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToSouth));
 
                 GivePlayerQuestsAtLocation();
+                GetMonsterAtLocation();
             }
         }
         public World CurrentWorld { get; set; }
