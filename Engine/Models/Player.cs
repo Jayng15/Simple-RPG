@@ -9,13 +9,13 @@ namespace Engine.Models
 {
     public class Player : BaseNotificationClass
     {
-        private string _name;
-        private string _characterClass;
+        private string? _name;
+        private string? _characterClass;
         private int _hitPoints;
         private int _experiencePoints;
         private int _level;
         private int _gold;
-        public string Name
+        public string? Name
         {
             get { return _name; }
             set
@@ -24,7 +24,7 @@ namespace Engine.Models
                 OnPropertyChanged(nameof(Name));
             }
         }
-        public string CharacterClass
+        public string? CharacterClass
         {
             get { return _characterClass; }
             set
@@ -70,10 +70,12 @@ namespace Engine.Models
             }
         }
 
-        public ObservableCollection<GameItem?>? Inventory { get; set; }
+        public ObservableCollection<GameItem>? Inventory { get; set; }
+        public ObservableCollection<QuestStatus>? Quests { get; set; }
 
         public Player() {
             Inventory = new ObservableCollection<GameItem>();
+            Quests = new ObservableCollection<QuestStatus>();
         }
     }
 }

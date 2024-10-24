@@ -24,6 +24,9 @@ internal static class WorldFactory
         newWorld.AddLocation(
                 0, 1, "Herbalist's Hut", "The Local Herbalist's hut.",
                     "pack://application:,,,/Engine;component/Images/Locations/HerbalistsHut.png");
+
+        newWorld.LocationAt(0, 1)?.QuestsAvailableHere.Add(QuestFactory.GetQuestByID(1));
+
         newWorld.AddLocation(
                 0, 2, "Herb Garden", "There are medicinal herbs growing here.",
                     "pack://application:,,,/Engine;component/Images/Locations/HerbalistsGarden.png");
