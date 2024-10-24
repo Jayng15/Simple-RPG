@@ -6,8 +6,19 @@ namespace Engine.ViewModels
 {
     public class GameSession : BaseNotificationClass
     {
-        private Location _currentLocation;
+        private Location? _currentLocation;
+        private Monster? _currentMonster;
         public Player CurrentPlayer { get; set; }
+        public Monster? CurrentMonster
+        {
+            get { return _currentMonster; }
+            set
+            {
+                _currentMonster = value;
+                OnPropertyChanged(nameof(CurrentMonster));
+                OnPropertyChanged(nameof(HasMonster));
+            }
+        }
         public Location? CurrentLocation
         {
             get { return _currentLocation; }
@@ -27,15 +38,17 @@ namespace Engine.ViewModels
 
         public bool HasLocationToNorth =>
             CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate + 1) != null;
-        
+
         public bool HasLocationToWest =>
             CurrentWorld.LocationAt(CurrentLocation.XCoordinate - 1, CurrentLocation.YCoordinate) != null;
-        
+
         public bool HasLocationToEast =>
             CurrentWorld.LocationAt(CurrentLocation.XCoordinate + 1, CurrentLocation.YCoordinate) != null;
-        
+
         public bool HasLocationToSouth =>
             CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate - 1) != null;
+
+        public bool HasMonster => CurrentMonster != null;
         public GameSession()
         {
             CurrentPlayer = new Player
@@ -85,12 +98,20 @@ namespace Engine.ViewModels
             }
         }
 
-        private void GivePlayerQuestsAtLocation() {
-            foreach (Quest? quest in CurrentLocation.QuestsAvailableHere) {
-                if(!CurrentPlayer.Quests.Any(pq => pq.PlayerQuest.ID == quest.ID)) {
+        private void GivePlayerQuestsAtLocation()
+        {
+            foreach (Quest? quest in CurrentLocation.QuestsAvailableHere)
+            {
+                if (!CurrentPlayer.Quests.Any(pq => pq.PlayerQuest.ID == quest.ID))
+                {
                     CurrentPlayer.Quests.Add(new QuestStatus(quest));
                 }
             }
+        }
+
+        private void GetMonsterAtLocation()
+        {
+            CurrentMonster = CurrentLocation.GetMonster();
         }
     }
 }

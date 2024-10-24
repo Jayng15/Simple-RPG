@@ -18,18 +18,18 @@ internal static class WorldFactory
                 -2, -1, "Farmer's Field",
                     "There are rows of corn growing here, with giant rats hiding between them.",
                         "pack://application:,,,/Engine;component/Images/Locations/FarmFields.png");
+        newWorld.LocationAt(-2, -1)?.AddMonster(2, 100);
         newWorld.AddLocation(
                 0, 0, "TownSquare", "This is the town square.",
                     "pack://application:,,,/Engine;component/Images/Locations/TownSquare.png");
         newWorld.AddLocation(
                 0, 1, "Herbalist's Hut", "The Local Herbalist's hut.",
                     "pack://application:,,,/Engine;component/Images/Locations/HerbalistsHut.png");
-
         newWorld.LocationAt(0, 1)?.QuestsAvailableHere.Add(QuestFactory.GetQuestByID(1));
-
         newWorld.AddLocation(
                 0, 2, "Herb Garden", "There are medicinal herbs growing here.",
                     "pack://application:,,,/Engine;component/Images/Locations/HerbalistsGarden.png");
+        newWorld.LocationAt(0, 2)?.AddMonster(2, 100);
         newWorld.AddLocation(
                 -1, 0, "Trading Shop", "The Local Trader's Shop.",
                     "pack://application:,,,/Engine;component/Images/Locations/Trader.png");
@@ -39,6 +39,7 @@ internal static class WorldFactory
         newWorld.AddLocation(
                     2, 0, "Spider Forest", "There are giant venomous spiders here.",
                     "pack://application:,,,/Engine;component/Images/Locations/Trader.png");
+        newWorld.LocationAt(2, 0)?.AddMonster(3, 100);
 
         return newWorld;
     }

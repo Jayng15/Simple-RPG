@@ -9,7 +9,8 @@
 
 
   <ItemGroup>
-      <Resource Include="Images/Locations/*.png" />
+      <Resource Include="Images/Locations/*.png"/>
+      <Resource Include="Images/Monsters/*.png"/>
   </ItemGroup>
 
 </Project>
