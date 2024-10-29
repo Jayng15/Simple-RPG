@@ -2,18 +2,18 @@ namespace Engine.Models;
 
 public class World
 {
-    private List<Location> _locations = new List<Location>();
+    private readonly List<Location> _locations = new List<Location>();
 
-    internal void AddLocation(int XCoordinate, int YCoordinate,
-            string Name, string Description, string ImageName)
+    internal void AddLocation(int xCoordinate, int yCoordinate,
+            string name, string description, string imageName)
     {
         Location loc = new Location
         {
-            XCoordinate = XCoordinate,
-            YCoordinate = YCoordinate,
-            Name = Name,
-            Description = Description,
-            ImageName = ImageName
+            XCoordinate = xCoordinate,
+            YCoordinate = yCoordinate,
+            Name = name,
+            Description = description,
+            ImageName = $"pack://application:,,,/Engine;component/Images/Locations/{imageName}"
         };
 
         _locations.Add(loc);

@@ -20,7 +20,7 @@ namespace Engine.Models
             get { return _name; }
             set
             {
-                _name = value; 
+                _name = value;
                 OnPropertyChanged(nameof(Name));
             }
         }
@@ -29,7 +29,7 @@ namespace Engine.Models
             get { return _characterClass; }
             set
             {
-                _characterClass = value; 
+                _characterClass = value;
                 OnPropertyChanged(nameof(CharacterClass));
             }
         }
@@ -38,7 +38,7 @@ namespace Engine.Models
             get { return _hitPoints; }
             set
             {
-                _hitPoints = value; 
+                _hitPoints = value;
                 OnPropertyChanged(nameof(HitPoints));
             }
         }
@@ -47,7 +47,7 @@ namespace Engine.Models
             get { return _experiencePoints; }
             set
             {
-                _experiencePoints = value; 
+                _experiencePoints = value;
                 OnPropertyChanged(nameof(ExperiencePoints));
             }
         }
@@ -56,7 +56,7 @@ namespace Engine.Models
             get { return _level; }
             set
             {
-                _level = value; 
+                _level = value;
                 OnPropertyChanged(nameof(Level));
             }
         }
@@ -70,12 +70,25 @@ namespace Engine.Models
             }
         }
 
-        public ObservableCollection<GameItem>? Inventory { get; set; }
+        public ObservableCollection<GameItem> Inventory { get; set; }
+        public List<GameItem>? Weapons =>
+            Inventory?.Where(i => i is Weapon).ToList();
+
         public ObservableCollection<QuestStatus>? Quests { get; set; }
 
-        public Player() {
+        public Player()
+        {
             Inventory = new ObservableCollection<GameItem>();
             Quests = new ObservableCollection<QuestStatus>();
+        }
+
+        public void AddItemToInventory(GameItem? item)
+        {
+            if ( item == null ) {
+                return;
+            }
+            Inventory.Add(item);
+            OnPropertyChanged(nameof(Weapons));
         }
     }
 }
