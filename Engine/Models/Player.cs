@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -84,11 +85,36 @@ namespace Engine.Models
 
         public void AddItemToInventory(GameItem? item)
         {
-            if ( item == null ) {
+            if (item == null)
+            {
                 return;
             }
             Inventory.Add(item);
             OnPropertyChanged(nameof(Weapons));
         }
+
+        public void RemoveItemFromInventory(GameItem? item)
+        {
+            if (item == null)
+            {
+                return;
+            }
+
+            Inventory.Remove(item);
+            OnPropertyChanged(nameof(Weapons));
+        }
+
+        public bool HasAllTheseItems(List<ItemQuantity> items)
+        {
+            foreach (ItemQuantity item in items)
+            {
+                if (Inventory.Count(i => i.ItemTypeID == item.ItemID) < item.Quantity)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
     }
 }

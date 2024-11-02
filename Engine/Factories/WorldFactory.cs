@@ -11,9 +11,11 @@ internal static class WorldFactory
         newWorld.AddLocation(
                 0, -1, "Home", "This is your home.",
                     "Home.png");
+
         newWorld.AddLocation(
-                -1, -1, "Farmer's House", "This is the house of the local farmer.",
+                -1, -1, "Farmer's House", "This is the house of the local farmer, Ted.",
                     "FarmHouse.png");
+        newWorld.LocationAt(-1, -1).TraderHere = TraderFactory.GetTraderByName("Farmer Ted");
         newWorld.AddLocation(
                 -2, -1, "Farmer's Field",
                     "There are rows of corn growing here, with giant rats hiding between them.",
@@ -25,6 +27,7 @@ internal static class WorldFactory
         newWorld.AddLocation(
                 0, 1, "Herbalist's Hut", "The Local Herbalist's hut.",
                     "HerbalistsHut.png");
+        newWorld.LocationAt(0, 1).TraderHere = TraderFactory.GetTraderByName("Pete the Herbalist");
         newWorld.LocationAt(0, 1)?.QuestsAvailableHere.Add(QuestFactory.GetQuestByID(1));
         newWorld.AddLocation(
                 0, 2, "Herb Garden", "There are medicinal herbs growing here.",
@@ -33,6 +36,7 @@ internal static class WorldFactory
         newWorld.AddLocation(
                 -1, 0, "Trading Shop", "The Local Trader's Shop.",
                     "Trader.png");
+        newWorld.LocationAt(-1, 0).TraderHere = TraderFactory.GetTraderByName("Susan");
         newWorld.AddLocation(
                 1, 0, "Town Gate", "The gate that leads to the Spider Forest.",
                     "TownGate.png");

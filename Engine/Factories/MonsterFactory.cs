@@ -8,8 +8,8 @@ public class MonsterFactory {
         switch(id) {
             case 1: 
                 Monster snake = new Monster("Snake", "Snake.png", 4, 4, 2, 5, 5, 1);
-                AddLootItem(snake, 9001, 25);
-                AddLootItem(snake, 9002, 75);
+                AddLootItem(snake, 9001, 75);
+                AddLootItem(snake, 9002, 25);
                 return snake;
             case 2:
                 Monster rat = new Monster("Rat", "Rat.png", 5, 5, 1, 2, 5, 1);
