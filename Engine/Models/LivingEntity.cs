@@ -49,9 +49,12 @@ public abstract class LivingEntity : BaseNotificationClass
     public ObservableCollection<GameItem> Inventory { get; set; }
     public List<GameItem> Weapons => Inventory?.Where(i => i is Weapon).ToList();
 
+    public ObservableCollection<GroupedInventoryItem> GroupedInventory { get; set; }
+
     protected LivingEntity()
     {
         Inventory = new ObservableCollection<GameItem>();
+        GroupedInventory = new ObservableCollection<GroupedInventoryItem>();
     }
     public void AddItemToInventory(GameItem? item)
     {
@@ -60,6 +63,18 @@ public abstract class LivingEntity : BaseNotificationClass
             return;
         }
         Inventory.Add(item);
+        if (item.IsUnique)
+        {
+            GroupedInventory.Add(new GroupedInventoryItem(item, 1));
+        }
+        else
+        {
+            if (GroupedInventory.All(gi => gi.Item.ItemTypeID != item.ItemTypeID))
+            {
+                GroupedInventory.Add(new GroupedInventoryItem(item, 0));
+            }
+            GroupedInventory.First(gi => gi.Item.ItemTypeID == item.ItemTypeID).Quantity++;
+        }
         OnPropertyChanged(nameof(Weapons));
     }
 
@@ -68,9 +83,23 @@ public abstract class LivingEntity : BaseNotificationClass
         if (item == null)
         {
             return;
-        }
+       }
 
         Inventory.Remove(item);
+        GroupedInventoryItem groupedInventoryItem =
+            GroupedInventory.FirstOrDefault(
+                gi => gi.Item.ItemTypeID == item.ItemTypeID);
+        if (groupedInventoryItem != null)
+        {
+            if (groupedInventoryItem.Quantity == 1)
+            {
+                GroupedInventory.Remove(groupedInventoryItem);
+            }
+            else
+            {
+                groupedInventoryItem.Quantity--;
+            }
+        }
         OnPropertyChanged(nameof(Weapons));
     }
 

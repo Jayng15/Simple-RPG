@@ -18,9 +18,9 @@ public class Monster : LivingEntity
         Name = name;
         ImageName = $"pack://application:,,,/Engine;component/Images/Monsters/{imageName}";
         MaximumHitPoints = maximumHitPoints;
+        CurrentHitPoints = hitPoints;
         MinimumDamage = minimumDamage;
         MaximumDamage = maximumDamage;
-        CurrentHitPoints = hitPoints;
         RewardExperiencePoints = rewardExperiencePoints;
         Gold = rewardGold;
     }
