@@ -29,7 +29,7 @@ public class MonsterFactory {
 
     private static void AddLootItem(Monster monster, int itemID, int percentage) {
         if (RandomNumberGenerator.GetInt32(1, 101) <= percentage) {
-            monster.Inventory?.Add(new ItemQuantity(itemID, 1));
+            monster.Inventory?.Add(ItemFactory.CreateGameItem(itemID));
         }
     } 
 }
