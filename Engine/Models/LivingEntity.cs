@@ -8,6 +8,7 @@ public abstract class LivingEntity : BaseNotificationClass
     private int _maximumHitPoints;
     private int _currentHitPoints;
     private int _gold;
+    private int _level;
 
     public string Name
     {
@@ -30,7 +31,7 @@ public abstract class LivingEntity : BaseNotificationClass
     public int MaximumHitPoints
     {
         get => _maximumHitPoints;
-        set
+        protected set
         {
             _maximumHitPoints = value;
             OnPropertyChanged(nameof(MaximumHitPoints));
@@ -46,15 +47,24 @@ public abstract class LivingEntity : BaseNotificationClass
         }
     }
 
+    public int Level {
+        get => _level;
+        protected set {
+            _level = value;
+            OnPropertyChanged(nameof(Level));
+        }
+    }
+
     public ObservableCollection<GameItem> Inventory { get; set; }
     public List<GameItem> Weapons => Inventory?.Where(i => i is Weapon).ToList();
 
     public ObservableCollection<GroupedInventoryItem> GroupedInventory { get; set; }
 
-    protected LivingEntity()
+    protected LivingEntity(int level = 1)
     {
         Inventory = new ObservableCollection<GameItem>();
         GroupedInventory = new ObservableCollection<GroupedInventoryItem>();
+        Level = level;
     }
     public void AddItemToInventory(GameItem? item)
     {
@@ -86,9 +96,9 @@ public abstract class LivingEntity : BaseNotificationClass
        }
 
         Inventory.Remove(item);
-        GroupedInventoryItem groupedInventoryItem =
-            GroupedInventory.FirstOrDefault(
-                gi => gi.Item.ItemTypeID == item.ItemTypeID);
+        GroupedInventoryItem groupedInventoryItem = item.IsUnique ? 
+            GroupedInventory.FirstOrDefault(gi => gi.Item == item) :
+                GroupedInventory.FirstOrDefault(gi => gi.Item.ItemTypeID == item.ItemTypeID);
         if (groupedInventoryItem != null)
         {
             if (groupedInventoryItem.Quantity == 1)
