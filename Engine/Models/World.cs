@@ -7,14 +7,15 @@ public class World
     internal void AddLocation(int xCoordinate, int yCoordinate,
             string name, string description, string imageName)
     {
-        Location loc = new Location
-        {
-            XCoordinate = xCoordinate,
-            YCoordinate = yCoordinate,
-            Name = name,
-            Description = description,
-            ImageName = $"pack://application:,,,/Engine;component/Images/Locations/{imageName}"
-        };
+        string ImageName = $"pack://application:,,,/Engine;component/Images/Locations/{imageName}";
+        Location loc = new Location(xCoordinate, yCoordinate, name, description, ImageName);
+
+        // {
+        //     XCoordinate = xCoordinate,
+        //     YCoordinate = yCoordinate,
+        //     Name = name,
+        //     Description = description,
+        // };
 
         _locations.Add(loc);
     }

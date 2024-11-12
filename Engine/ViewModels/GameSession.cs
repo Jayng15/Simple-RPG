@@ -39,7 +39,7 @@ namespace Engine.ViewModels
             set
             {
                 _currentMonster = value;
-                OnPropertyChanged(nameof(CurrentMonster));
+                OnPropertyChanged();
                 OnPropertyChanged(nameof(HasMonster));
 
                 if (CurrentMonster != null)
@@ -57,7 +57,7 @@ namespace Engine.ViewModels
                 _currentLocation = value;
 
                 CurrentTrader = CurrentLocation.TraderHere;
-                OnPropertyChanged(nameof(CurrentLocation));
+                OnPropertyChanged();
                 OnPropertyChanged(nameof(HasLocationToNorth));
                 OnPropertyChanged(nameof(HasLocationToWest));
                 OnPropertyChanged(nameof(HasLocationToEast));
@@ -74,12 +74,12 @@ namespace Engine.ViewModels
             set {
                 _currentTrader = value;
                 
-                OnPropertyChanged(nameof(CurrentTrader));
+                OnPropertyChanged();
                 OnPropertyChanged(nameof(HasTrader));
             }
         }
 
-        public World CurrentWorld { get; set; }
+        public World CurrentWorld { get; }
 
         public bool HasLocationToNorth =>
             CurrentWorld.LocationAt(CurrentLocation.XCoordinate, CurrentLocation.YCoordinate + 1) != null;
@@ -107,7 +107,7 @@ namespace Engine.ViewModels
 
             if ( !CurrentPlayer.Weapons.Any() )
             {
-                CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(1001));
+                CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(1002));
             }
 
             CurrentWorld = WorldFactory.CreateWorld();

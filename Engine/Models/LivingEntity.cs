@@ -16,7 +16,7 @@ public abstract class LivingEntity : BaseNotificationClass
         set
         {
             _name = value;
-            OnPropertyChanged(nameof(Name));
+            OnPropertyChanged();
         }
     }
     public int Gold
@@ -25,7 +25,7 @@ public abstract class LivingEntity : BaseNotificationClass
         set
         {
             _gold = value;
-            OnPropertyChanged(nameof(Gold));
+            OnPropertyChanged();
         }
     }
     public int MaximumHitPoints
@@ -34,7 +34,7 @@ public abstract class LivingEntity : BaseNotificationClass
         protected set
         {
             _maximumHitPoints = value;
-            OnPropertyChanged(nameof(MaximumHitPoints));
+            OnPropertyChanged();
         }
     }
     public int CurrentHitPoints
@@ -43,7 +43,7 @@ public abstract class LivingEntity : BaseNotificationClass
         set
         {
             _currentHitPoints = value;
-            OnPropertyChanged(nameof(CurrentHitPoints));
+            OnPropertyChanged();
         }
     }
 
@@ -51,11 +51,11 @@ public abstract class LivingEntity : BaseNotificationClass
         get => _level;
         protected set {
             _level = value;
-            OnPropertyChanged(nameof(Level));
+            OnPropertyChanged();
         }
     }
 
-    public ObservableCollection<GameItem> Inventory { get; set; }
+    public ObservableCollection<GameItem> Inventory { get; }
     public List<GameItem> Weapons => Inventory?.Where(i => i is Weapon).ToList();
 
     public ObservableCollection<GroupedInventoryItem> GroupedInventory { get; set; }
