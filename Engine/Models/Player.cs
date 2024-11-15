@@ -36,6 +36,7 @@ namespace Engine.Models
         public Player()
         {
             Quests = new ObservableCollection<QuestStatus>();
+            MaximumHitPoints = 10;
         }
 
 

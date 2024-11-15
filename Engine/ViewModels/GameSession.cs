@@ -19,12 +19,12 @@ namespace Engine.ViewModels
             set {
                 if(_currentPlayer != null) {
                     _currentPlayer.OnLeveledUp -= OnCurrentPlayerLeveledUp;
-                    // _currentPlayer.OnKilled -= OnCurrentPlayerKilled;
+                    _currentPlayer.OnKilled -= OnCurrentPlayerKilled;
                 }
                 _currentPlayer = value;
                 if (_currentPlayer != null) {
                     _currentPlayer.OnLeveledUp += OnCurrentPlayerLeveledUp;
-                    // _currentPlayer.OnKilled += OnCurrentPlayerKilled;
+                    _currentPlayer.OnKilled += OnCurrentPlayerKilled;
                 }
 
             }
@@ -104,6 +104,7 @@ namespace Engine.ViewModels
                 CharacterClass = "Fighter",
                 CurrentHitPoints = 10,
             };
+            CurrentPlayer.SetLevelAndMaximumHitPoints();
 
             if ( !CurrentPlayer.Weapons.Any() )
             {
@@ -227,6 +228,13 @@ namespace Engine.ViewModels
             RaiseMessage($"You are now level {CurrentPlayer.Level}!");
         }
 
+        private void OnCurrentPlayerKilled(object sender, System.EventArgs e) {
+            RaiseMessage("");
+            RaiseMessage("You have been killed.");
+            CurrentLocation = CurrentWorld.LocationAt(0, -1); // Player's home
+            CurrentPlayer.CurrentHitPoints = CurrentPlayer.Level * 10;
+        }
+
         public void AttackCurrentMonster()
         {
             if (CurrentWeapon == null)
@@ -283,17 +291,8 @@ namespace Engine.ViewModels
                 }
                 else
                 {
-                    CurrentPlayer.CurrentHitPoints -= damageToPlayer;
                     RaiseMessage($"The {CurrentMonster.Name} dealed {damageToPlayer} damage to you.");
-                }
-
-                if (CurrentPlayer.CurrentHitPoints <= 0)
-                {
-                    RaiseMessage("");
-                    RaiseMessage($"The {CurrentMonster.Name} killed you.");
-
-                    CurrentLocation = CurrentWorld.LocationAt(0, -1); //Player's home
-                    CurrentPlayer.CurrentHitPoints = CurrentPlayer.Level * 10;
+                    CurrentPlayer.TakeDamage(damageToPlayer);
                 }
             }
         }

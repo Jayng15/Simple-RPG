@@ -11,3 +11,6 @@ C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\
 C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0-windows\ref\Engine.dll
 C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0-windows\Engine.g.resources
 C:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0-windows\Engine.sourcelink.json
+c:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\bin\Debug\net8.0-windows\Engine.runtimeconfig.json
+c:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0-windows\Engine.csproj.AssemblyReference.cache
+c:\Users\jayng\Desktop\Education\study\Dev\project-based-learning\C#\Engine\obj\Debug\net8.0-windows\Engine.genruntimeconfig.cache

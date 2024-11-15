@@ -58,6 +58,9 @@ public abstract class LivingEntity : BaseNotificationClass
     public ObservableCollection<GameItem> Inventory { get; }
     public List<GameItem> Weapons => Inventory?.Where(i => i is Weapon).ToList();
 
+    public event EventHandler OnKilled;
+    public bool IsDead => CurrentHitPoints <= 0;
+
     public ObservableCollection<GroupedInventoryItem> GroupedInventory { get; set; }
 
     protected LivingEntity(int level = 1)
@@ -113,4 +116,18 @@ public abstract class LivingEntity : BaseNotificationClass
         OnPropertyChanged(nameof(Weapons));
     }
 
+    public void TakeDamage(int hitPointsOfDamage)
+    {
+        CurrentHitPoints -= hitPointsOfDamage;
+        if (IsDead)
+        {
+            CurrentHitPoints = 0;
+            RaiseOnKilledEvent();
+        }
+    }
+
+    public void RaiseOnKilledEvent()
+    {
+        OnKilled?.Invoke(this, System.EventArgs.Empty);
+    }
 }

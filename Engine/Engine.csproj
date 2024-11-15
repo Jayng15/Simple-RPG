@@ -9,8 +9,13 @@
 
 
   <ItemGroup>
-      <Resource Include="Images/Locations/*.png"/>
-      <Resource Include="Images/Monsters/*.png"/>
+      <Resource Include="Images/Locations/*.png" />
+      <Resource Include="Images/Monsters/*.png" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.9.2" />
   </ItemGroup>
 
 </Project>
