@@ -108,7 +108,7 @@ namespace Engine.ViewModels
 
             if ( !CurrentPlayer.Weapons.Any() )
             {
-                CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(1002));
+                CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(1003));
             }
 
             CurrentWorld = WorldFactory.CreateWorld();
@@ -116,7 +116,7 @@ namespace Engine.ViewModels
             CurrentLocation = CurrentWorld.LocationAt(0, 0);
         }
 
-        public Weapon? CurrentWeapon { get; set; }
+        public GameItem? CurrentWeapon { get; set; }
 
         public void MoveNorth()
         {

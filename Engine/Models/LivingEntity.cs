@@ -56,7 +56,7 @@ public abstract class LivingEntity : BaseNotificationClass
     }
 
     public ObservableCollection<GameItem> Inventory { get; }
-    public List<GameItem> Weapons => Inventory?.Where(i => i is Weapon).ToList();
+    public List<GameItem> Weapons => Inventory?.Where(i => i.Category is GameItem.ItemCategory.Weapon).ToList();
 
     public event EventHandler OnKilled;
     public bool IsDead => CurrentHitPoints <= 0;
